@@ -1,0 +1,536 @@
+/* ============================================
+   NAVBAR COMPLETO - ToolShare
+   Estilos para todos los estados del navbar
+   ============================================ */
+
+:root {
+    --primary: #3a86ff;
+    --primary-dark: #2667cc;
+    --primary-light: rgba(58, 134, 255, 0.1);
+    --secondary: #6c757d;
+    --success: #38b000;
+    --danger: #e63946;
+    --warning: #ffbe0b;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --border: #dee2e6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --radius-sm: 4px;
+}
+
+/* ========== NAVBAR BASE ========== */
+.navbar {
+    background-color: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.02);
+}
+
+.navbar .logo i {
+    color: var(--primary);
+    margin-right: 12px;
+    font-size: 2.2rem;
+}
+
+/* Contenedor de enlaces */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Enlaces principales */
+.nav-links > a {
+    color: var(--dark);
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.nav-links > a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.nav-links > a.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ========== ESTADO NO AUTENTICADO ========== */
+/* Botones de autenticación */
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 10px;
+}
+
+.nav-auth a {
+    padding: 10px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.nav-auth .btn-login {
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.nav-auth .btn-login:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.nav-auth .btn-register {
+    background-color: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+}
+
+.nav-auth .btn-register:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+}
+
+/* ========== ESTADO AUTENTICADO ========== */
+/* Botón de acción principal */
+.nav-links .btn-primary-action {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    border: 2px solid var(--primary);
+    white-space: nowrap;
+}
+
+.nav-links .btn-primary-action:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+}
+
+/* Menú de usuario */
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 10px;
+}
+
+.user-menu:hover {
+    background-color: var(--light);
+}
+
+/* Avatar del usuario */
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    transition: transform 0.2s;
+}
+
+.user-menu:hover .user-avatar {
+    transform: scale(1.05);
+}
+
+/* Dropdown del usuario */
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1001;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.user-menu:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Elementos del dropdown */
+.user-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 1px solid var(--light-gray);
+    font-weight: 500;
+}
+
+.user-dropdown a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding-left: 25px;
+}
+
+.user-dropdown a i {
+    width: 20px;
+    text-align: center;
+    color: var(--gray);
+    font-size: 1.1rem;
+}
+
+.user-dropdown a:hover i {
+    color: var(--primary);
+}
+
+/* Separador en dropdown */
+.dropdown-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+}
+
+/* Opción de cerrar sesión */
+.user-dropdown .logout {
+    color: var(--danger);
+    border-bottom: none;
+}
+
+.user-dropdown .logout:hover {
+    background-color: rgba(230, 57, 70, 0.1);
+    color: var(--danger);
+}
+
+.user-dropdown .logout i {
+    color: var(--danger);
+}
+
+/* Indicador de notificaciones */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--danger);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+/* ========== NAVBAR MOBILE ========== */
+/* Botón hamburguesa (opcional para responsive) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .nav-links > a {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .nav-auth a {
+        padding: 8px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links .btn-primary-action {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+    
+    /* Opción 1: Menú hamburguesa (recomendado) */
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 20px;
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links > a {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+    
+    .nav-auth {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-auth a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .user-menu {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        padding: 12px;
+    }
+    
+    .user-dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: var(--light);
+        margin-top: 10px;
+        display: none;
+    }
+    
+    .user-menu:hover .user-dropdown {
+        display: block;
+    }
+    
+    /* Opción 2: Navbar simplificado sin hamburguesa */
+    /*
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-links.mobile-visible {
+        display: flex;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--border);
+    }
+    */
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+    
+    .navbar .logo i {
+        font-size: 1.8rem;
+    }
+    
+    .navbar {
+        padding: 12px 0;
+    }
+}
+
+/* ========== ESTADOS ESPECIALES ========== */
+/* Navbar con scroll */
+.navbar.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Navbar en página de inicio */
+.navbar.homepage {
+    background: transparent;
+    box-shadow: none;
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar.homepage .logo,
+.navbar.homepage .nav-links > a,
+.navbar.homepage .menu-toggle {
+    color: white;
+}
+
+.navbar.homepage .nav-links > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar.homepage .nav-auth .btn-login {
+    color: white;
+    border-color: white;
+}
+
+.navbar.homepage .nav-auth .btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animación suave para el navbar */
+.navbar {
+    transition: all 0.3s ease;
+}
+
+/* Efecto de elevación al hacer hover en items */
+.nav-links > a,
+.nav-auth a,
+.nav-links .btn-primary-action {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links > a::after,
+.nav-auth a::after,
+.nav-links .btn-primary-action::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-links > a:hover::after,
+.nav-auth a:hover::after,
+.nav-links .btn-primary-action:hover::after {
+    transform: translateX(0);
+}
+
+/* Estilos para la badge de notificaciones en el avatar */
+.user-menu.has-notifications .user-avatar {
+    position: relative;
+}
+
+.user-menu.has-notifications .user-avatar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--danger);
+    border-radius: 50%;
+    border: 2px solid white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Ajustes para cuando el dropdown se abre hacia arriba en mobile */
+@media (max-width: 768px) {
+    .user-dropdown {
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

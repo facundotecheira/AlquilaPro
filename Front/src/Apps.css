@@ -1,0 +1,96 @@
+*{
+  background-color: rgb(237, 237, 237) !important;
+  padding: 0;
+  margin: 0;
+}
+
+.containerGeneral{
+  width: 99%;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.card{
+  width: 17rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background-color: white !important;
+}
+
+.containerCards{
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  border: 1px solid black;
+}
+
+.containerimg{
+  display: flex;
+}
+
+.logo{
+  width: 1rem;
+  border: 1rem solid rgb(109, 75, 75);
+}
+
+.navbar{
+  display: flex !important; 
+  /* justify-content: space-evenly; */
+}
+
+.containerLogo{
+  display: flex;
+  gap: 1rem;
+}
+
+.backgrounCard{
+  background-color: white !important;
+}
+
+.containerbody{
+  display: flex;
+  gap: 1rem;
+  border: 1px solid black;
+}
+
+.containerInputFilter{
+  display: flex;
+  justify-content: center;
+
+}
+
+.containerInputFilter > input{
+  border-radius: 1rem;
+  padding-left: 10px;
+}
+
+.sidebar{
+  margin-top: 2.9rem;
+  border: 1px solid black;
+  width: 7em;
+}
+
+.containerAdd{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.containerInfoAdd{
+  /* border: 1px solid black; */
+}
+
+.section{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.selects{
+    border: none;
+  outline: none;
+  background: transparent;
+}
